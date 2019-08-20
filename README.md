@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
 
+## To run the project, execute the following
+    1. npm install
+    2. ng serve
+
 ## Installing modules/packages
 
 Run `npm install` to install packages and dependencies.
