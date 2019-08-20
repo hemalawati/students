@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+.student-table {
+    margin: 1rem;
+}
+
+table {
+    width: 100%;
+}
+
+mat-icon, .badge {
+    cursor: pointer;
+}
+
+/* .mat-raised-button {
+    margin: 20px;
+} */

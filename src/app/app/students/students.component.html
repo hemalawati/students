@@ -1,0 +1,19 @@
+<div fxLayout="column">
+    <mat-form-field>
+        <input matInput [(ngModel)]="localStudentRow.id" placeholder="ID">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="localStudentRow.firstName" placeholder="First Name">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="localStudentRow.lastName" placeholder="Last Name">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="localStudentRow.phone" placeholder="Phone">
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput [(ngModel)]="localStudentRow.status" placeholder="Status">
+    </mat-form-field>
+</div>
+<button mat-raised-button *ngIf="localStudentRow" (click)="save()" color="primary">Save</button>
+<button mat-raised-button (click)="cancel()">Cancel</button>
