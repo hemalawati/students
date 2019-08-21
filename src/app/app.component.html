@@ -1,11 +1,10 @@
 <h4><span class="badge badge-pill badge-primary" (click)="create()">Create</span></h4>
 <div class="mat-elevation-z8">
-  <table mat-table #table [dataSource]="dataSource" matSort matSortActive="status" matSortDirection="asc" cdkDropList
-    (cdkDropListDropped)="drop($event)">
+  <table mat-table cdkDropList (cdkDropListDropped)="drop($event)" [dataSource]="dataSource">
     <ng-container matColumnDef="dragDrop">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let dragDrop">
-        <mat-icon fontSet="fa" fontIcon="fa-align-justify" style="pointer-events: all;" cdkDragHandle></mat-icon>
+        <mat-icon fontSet="fa" fontIcon="fa-align-justify"></mat-icon>
       </td>
     </ng-container>
     <ng-container matColumnDef="id">
@@ -25,7 +24,7 @@
       <td mat-cell *matCellDef="let student">{{student.phone}}</td>
     </ng-container>
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <th mat-header-cell *matHeaderCellDef>Status</th>
       <td mat-cell *matCellDef="let student">{{student.status}}</td>
     </ng-container>
     <ng-container matColumnDef="action">
@@ -40,8 +39,7 @@
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay" style="pointer-events: none;" cdkDrag
-      [cdkDragData]="myRowData"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay" cdkDrag></tr>
   </table>
   <mat-paginator [pageSizeOptions]="[10, 20]"></mat-paginator>
 </div>

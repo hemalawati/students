@@ -2,7 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog, MatDialogConfig, MatSort } from '@angular/material';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource, MatTable } from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
+import * as _ from 'lodash';
 import { StudentsComponent } from './app/students/students.component';
 
 @Component({
@@ -14,14 +15,13 @@ import { StudentsComponent } from './app/students/students.component';
 export class AppComponent implements OnInit {
   constructor(private dialog: MatDialog) { }
 
-  @ViewChild('table', { static: true }) table: MatTable<Student>;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   columnsToDisplay = ['dragDrop', 'id', 'firstName', 'lastName', 'phone', 'status', 'action'];
-  dataSource = new MatTableDataSource<Student>(students);
-  localStudents = students;
+  dataSource: MatTableDataSource<any>;
 
   ngOnInit() {
+    this.dataSource = new MatTableDataSource(students);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -49,9 +49,9 @@ export class AppComponent implements OnInit {
     }
   }
 
-  drop(event: CdkDragDrop<Student[]>) {
-    moveItemInArray(students, event.previousIndex, event.currentIndex);
-    this.table.renderRows();
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.dataSource.data, event.previousIndex, event.currentIndex);
+    this.dataSource.data = _.cloneDeep(this.dataSource.data);
   }
 }
 
