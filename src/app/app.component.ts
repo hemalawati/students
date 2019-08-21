@@ -21,7 +21,15 @@ export class AppComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
 
   ngOnInit() {
-    this.dataSource = new MatTableDataSource(students);
+    let localStudents = students.sort((a, b) => {
+      if (a.status.toLowerCase() > b.status.toLowerCase()) {
+        return 1;
+      } else if (a.status.toLowerCase() < b.status.toLowerCase()) {
+        return -1;
+      }
+    });
+
+    this.dataSource = new MatTableDataSource(localStudents);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
